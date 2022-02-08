@@ -15,7 +15,7 @@ export function InputItem() {
             <RectButton
             >
                 <View style={styles.addItems}>
-                    <Icon name="plus" color={theme.blue} size={18}/>
+                    <Icon name="plus" color={theme.colors.blue} size={18}/>
                 </View>
             </RectButton>
         </View>

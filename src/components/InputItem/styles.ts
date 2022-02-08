@@ -3,7 +3,7 @@ import { theme } from '../../global/styles/theme';
 
 export const styles = StyleSheet.create({
     container: {
-        backgroundColor: theme.blue,
+        backgroundColor: theme.colors.blue,
         height: 62,
         width: '100%',
         marginBottom: 35,
@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     inputText:{
         width: '70%',
         height: 38,
-        backgroundColor: theme.white,
+        backgroundColor: theme.colors.white,
         borderRadius: 4,
         fontSize: 17,
         paddingLeft: 18,
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     addItems:{
         height: 38,
         width: 58,
-        backgroundColor: theme.white,
+        backgroundColor: theme.colors.white,
         borderRadius: 4,
         alignItems: 'center',
         justifyContent: 'center',

@@ -3,6 +3,6 @@ import { theme } from '../../global/styles/theme';
 
 export const styles = StyleSheet.create({
     container: {
-        backgroundColor: theme.white,
+        backgroundColor: theme.colors.white,
     },
 })
