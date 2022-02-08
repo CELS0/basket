@@ -6,12 +6,18 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import { RectButton } from 'react-native-gesture-handler';
 import { theme } from '../../global/styles/theme';
 
-type  Props = {
+type  ItemProps = {
     nameItem: string;
     done: boolean;
 }
 
-export function Item({nameItem}: Props) {
+type Props = {
+    data: ItemProps
+}
+
+export function Item({data}: Props) {
+    const {nameItem} = data;
+
     const [checked, setChecked] = useState(false);
     return (
         <View style={checked ? styles.containerDone :styles.container}>
