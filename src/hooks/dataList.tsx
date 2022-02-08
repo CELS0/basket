@@ -34,7 +34,9 @@ function DataListProvider({ children }: AuthProviderProps) {
         }
 
         items.push(item)
-        setItem(items)
+
+      const listRevert = items.reverse();
+        setItem(listRevert)
         itemsDoneAll()
     }
 

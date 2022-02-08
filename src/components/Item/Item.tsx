@@ -19,7 +19,6 @@ type Props = {
 
 export function Item({data}: Props) {
     const {nameItem,done, id} = data;
-    console.log(nameItem,done, id)
 
     const { updateItemDone } = useDataList();
 
