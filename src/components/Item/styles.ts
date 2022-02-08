@@ -3,13 +3,14 @@ import { theme } from '../../global/styles/theme';
 
 export const styles = StyleSheet.create({
     container: {
-        // flex: 1,
         height: 60,
         backgroundColor: theme.white,
         marginTop: 12,
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: 15,
+        width: '90%',
+        borderWidth: 1,
+        borderColor: theme.green,
     },
     done:{
         fontSize: 17,
