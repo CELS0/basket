@@ -43,6 +43,7 @@ function DataListProvider({ children }: AuthProviderProps) {
 
         if (result) {
             result.done = !result.done;
+            itemsDoneAll()
         };
     };
 
@@ -50,7 +51,7 @@ function DataListProvider({ children }: AuthProviderProps) {
         const itensDone = items.filter(item => item.done === true);
 
         setContItemDone(`${itensDone.length}/${items.length}`)
-        itemsDoneAll()
+        
     }
 
 
