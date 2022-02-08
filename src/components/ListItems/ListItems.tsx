@@ -2,6 +2,7 @@ import { styles } from './styles'
 import React from "react";
 import { FlatList, ScrollView } from "react-native";
 import { Item } from '../Item/Item';
+import { useDataList } from '../../hooks/dataList';
 
 type ItemProps = {
     id: number;
@@ -14,12 +15,13 @@ type Props = {
 }
 
 export function ListItems({ items }: Props) {
+    const { item } = useDataList();
     return (
         <FlatList
             keyExtractor={item => String(item.id)}
-            data={items}
+            data={item}
             renderItem={({ item }) => (
-                <Item data={item}/>
+                <Item data={item} />
             )}
         />
     )
