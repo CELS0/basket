@@ -14,10 +14,6 @@ type ItemProps = {
 export function ListItems() {
     const { item } = useDataList();
 
-    // useEffect(() => {
-    //     setListItem(item)
-    // },[]);
-
     return (
         <FlatList
             keyExtractor={item => String(item.id)}

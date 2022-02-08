@@ -26,11 +26,6 @@ function DataListProvider({ children }: AuthProviderProps) {
     const [item, setItem] = useState<Item[]>([]);
     const [contItemDone, setContItemDone] = useState('')
 
-
-    useEffect(() => {
-        itemsDoneAll()
-    }, [item])
-
     async function setList(nameItem: string) {
         const item: Item = {
             id: cont++,
@@ -40,6 +35,7 @@ function DataListProvider({ children }: AuthProviderProps) {
 
         items.push(item)
         setItem(items)
+        itemsDoneAll()
     }
 
     function updateItemDone(itemId: number) {
@@ -54,6 +50,7 @@ function DataListProvider({ children }: AuthProviderProps) {
         const itensDone = items.filter(item => item.done === true);
 
         setContItemDone(`${itensDone.length}/${items.length}`)
+        itemsDoneAll()
     }
 
 
