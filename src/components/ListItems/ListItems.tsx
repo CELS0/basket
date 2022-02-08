@@ -10,11 +10,8 @@ type ItemProps = {
     done: boolean;
 }
 
-type Props = {
-    items: ItemProps[];
-}
 
-export function ListItems({ items }: Props) {
+export function ListItems() {
     const { item } = useDataList();
     return (
         <FlatList
