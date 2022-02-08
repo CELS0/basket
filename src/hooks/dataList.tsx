@@ -18,13 +18,14 @@ type AuthProviderProps = {
 export const DataListContext = createContext({} as AuthContextData);
 
 const items:Item[] =[];
+let cont = 0;
 
 function DataListProvider({ children }: AuthProviderProps) {
     const [item, setItem] = useState<Item[]>([]);
 
     async function setList(nameItem: string) {
         const item: Item = {
-            id: 1,
+            id: cont++,
             nameItem,
             done: false,
         }
