@@ -1,5 +1,5 @@
 import { styles } from './styles'
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, ScrollView } from "react-native";
 import { Item } from '../Item/Item';
 import { useDataList } from '../../hooks/dataList';
@@ -13,6 +13,11 @@ type ItemProps = {
 
 export function ListItems() {
     const { item } = useDataList();
+
+    // useEffect(() => {
+    //     setListItem(item)
+    // },[]);
+
     return (
         <FlatList
             keyExtractor={item => String(item.id)}

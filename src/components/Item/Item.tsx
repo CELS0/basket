@@ -5,8 +5,10 @@ import { Checkbox } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { RectButton } from 'react-native-gesture-handler';
 import { theme } from '../../global/styles/theme';
+import { useDataList } from '../../hooks/dataList';
 
 type  ItemProps = {
+    id: number,
     nameItem: string;
     done: boolean;
 }
@@ -16,16 +18,18 @@ type Props = {
 }
 
 export function Item({data}: Props) {
-    const {nameItem,done} = data;
+    const {nameItem,done, id} = data;
+    console.log(nameItem,done, id)
 
-    const [checked, setChecked] = useState(false);
+    const { updateItemDone } = useDataList();
+
     return (
         <View style={done ? styles.containerDone :styles.container}>
             <Checkbox
                 status={done ? 'checked' : 'unchecked'}
                 color={theme.colors.green}
                 onPress={() => {
-                    setChecked(!checked);
+                    updateItemDone(id)
                 }}
             />
             <Text style={done ? styles.contentDone : styles.content}>

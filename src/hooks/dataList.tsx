@@ -9,6 +9,7 @@ export interface Item {
 type AuthContextData = {
     item: Item[] | null;
     setList: (nameItem: string) => void;
+    updateItemDone: (itemId: number) => void;
 }
 
 type AuthProviderProps = {
@@ -17,7 +18,7 @@ type AuthProviderProps = {
 
 export const DataListContext = createContext({} as AuthContextData);
 
-const items:Item[] =[];
+const items: Item[] = [];
 let cont = 0;
 
 function DataListProvider({ children }: AuthProviderProps) {
@@ -34,11 +35,20 @@ function DataListProvider({ children }: AuthProviderProps) {
         setItem(items)
     }
 
+    function updateItemDone(itemId: number) {
+        const result = items.find(item => item.id === itemId);
+
+        if (result) {
+            result.done = !result.done;
+        };
+    };
+
 
     return (
         < DataListContext.Provider value={{
             item,
             setList,
+            updateItemDone,
         }
         }>
             {children}
