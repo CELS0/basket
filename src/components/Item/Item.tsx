@@ -9,7 +9,7 @@ import { theme } from '../../global/styles/theme';
 export function Item() {
     const [checked, setChecked] = useState(false);
     return (
-        <View style={styles.container}>
+        <View style={checked ? styles.containerDone :styles.container}>
             <Checkbox
                 status={checked ? 'checked' : 'unchecked'}
                 color={theme.colors.green}
@@ -17,7 +17,7 @@ export function Item() {
                     setChecked(!checked);
                 }}
             />
-            <Text style={checked ? styles.done : styles.content}>
+            <Text style={checked ? styles.contentDone : styles.content}>
                 Arroz - pacote 5kg
             </Text>
             <RectButton  style={styles.deleteButton}>

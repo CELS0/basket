@@ -4,13 +4,21 @@ import { theme } from '../../global/styles/theme';
 export const styles = StyleSheet.create({
     container: {
         height: 60,
-        backgroundColor: '#d9eedb',
+        backgroundColor: theme.colors.white,
         marginTop: 12,
         flexDirection: 'row',
         alignItems: 'center',
         width: '95%',
     },
-    done:{
+    containerDone:{
+        height: 60,
+        backgroundColor: theme.colors.greenDone,
+        marginTop: 12,
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '95%',
+    },
+    contentDone:{
         fontSize: 17,
         color: theme.colors.green,
         textDecorationLine: 'line-through'
