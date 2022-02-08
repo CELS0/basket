@@ -10,6 +10,7 @@ type AuthContextData = {
     item: Item[] | null;
     setList: (nameItem: string) => void;
     updateItemDone: (itemId: number) => void;
+    itemsDoneAll: () => string;
 }
 
 type AuthProviderProps = {
@@ -43,12 +44,21 @@ function DataListProvider({ children }: AuthProviderProps) {
         };
     };
 
+    function itemsDoneAll(): string{
+        const itensDone = items.filter(item => item.done === true);
+
+        console.log(`${itensDone.length}/${items.length}`)
+        
+        return `${itensDone.length}/${items.length}`
+    }
+
 
     return (
         < DataListContext.Provider value={{
             item,
             setList,
             updateItemDone,
+            itemsDoneAll,
         }
         }>
             {children}

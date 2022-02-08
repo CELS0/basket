@@ -8,7 +8,7 @@ import { InputItem } from '../../components/InputItem/InputItem';
 export function Home() {
     return (
             <View style={styles.container}>
-                <TopBar done={'3/8'} />
+                <TopBar/>
                 <ListItems />
                 <InputItem />
             </View>
