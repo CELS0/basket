@@ -12,11 +12,12 @@ export function Item() {
         <View style={styles.container}>
             <Checkbox
                 status={checked ? 'checked' : 'unchecked'}
+                color={theme.green}
                 onPress={() => {
                     setChecked(!checked);
                 }}
             />
-            <Text style={styles.content}>
+            <Text style={checked ? styles.done : styles.content}>
                 Arroz - pacote 5kg
             </Text>
             <RectButton  style={styles.deleteButton}>

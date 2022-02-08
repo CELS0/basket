@@ -11,6 +11,11 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         marginLeft: 15,
     },
+    done:{
+        fontSize: 17,
+        color: theme.green,
+        textDecorationLine: 'line-through'
+    },
     content:{
         fontSize: 17,
         color: theme.gray
