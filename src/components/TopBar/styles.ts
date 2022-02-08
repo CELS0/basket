@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
     container:{
         backgroundColor: theme.blue,
         height: 62,
-        width: '100%',
         flexDirection: 'row',
         marginTop: getStatusBarHeight(),
         alignItems: 'center',

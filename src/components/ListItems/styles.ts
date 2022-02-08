@@ -4,6 +4,5 @@ import { theme } from '../../global/styles/theme';
 export const styles = StyleSheet.create({
     container: {
         backgroundColor: theme.white,
-        width: '100%'
     },
 })
