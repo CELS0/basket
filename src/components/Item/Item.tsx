@@ -6,7 +6,12 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import { RectButton } from 'react-native-gesture-handler';
 import { theme } from '../../global/styles/theme';
 
-export function Item() {
+type  Props = {
+    nameItem: string;
+    done: boolean;
+}
+
+export function Item({nameItem}: Props) {
     const [checked, setChecked] = useState(false);
     return (
         <View style={checked ? styles.containerDone :styles.container}>
@@ -18,7 +23,7 @@ export function Item() {
                 }}
             />
             <Text style={checked ? styles.contentDone : styles.content}>
-                Arroz - pacote 5kg
+                {nameItem}
             </Text>
             <RectButton  style={styles.deleteButton}>
                     <Icon name="closecircle" color={theme.colors.red} size={21} />
