@@ -10,13 +10,8 @@ type ItemProps = {
     done: boolean;
 }
 
-type Props = {
-    items: ItemProps[];
-}
 
-export function ListItems({ items }: Props) {
-    // const [listItem, setListItem] = useState<ItemProps[] | null>([])
-
+export function ListItems() {
     const { item } = useDataList();
 
     // useEffect(() => {
