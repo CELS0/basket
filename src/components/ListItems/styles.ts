@@ -6,8 +6,8 @@ export const styles = StyleSheet.create({
         backgroundColor: theme.colors.white,
     },
     listItens:{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        // flex: 1,
+        // alignItems: 'center',
+        // justifyContent: 'center',
     }
 })

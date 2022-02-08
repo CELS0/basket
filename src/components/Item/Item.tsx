@@ -16,19 +16,19 @@ type Props = {
 }
 
 export function Item({data}: Props) {
-    const {nameItem} = data;
+    const {nameItem,done} = data;
 
     const [checked, setChecked] = useState(false);
     return (
-        <View style={checked ? styles.containerDone :styles.container}>
+        <View style={done ? styles.containerDone :styles.container}>
             <Checkbox
-                status={checked ? 'checked' : 'unchecked'}
+                status={done ? 'checked' : 'unchecked'}
                 color={theme.colors.green}
                 onPress={() => {
                     setChecked(!checked);
                 }}
             />
-            <Text style={checked ? styles.contentDone : styles.content}>
+            <Text style={done ? styles.contentDone : styles.content}>
                 {nameItem}
             </Text>
             <RectButton  style={styles.deleteButton}>

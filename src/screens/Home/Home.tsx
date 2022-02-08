@@ -4,9 +4,6 @@ import { View } from "react-native";
 import { TopBar } from '../../components/TopBar/TopBar';
 import { ListItems } from '../../components/ListItems/ListItems';
 import { InputItem } from '../../components/InputItem/InputItem';
-import {
-    KeyboardAvoidingView,
-} from 'react-native';
 
 const mock = [
     {
@@ -17,12 +14,12 @@ const mock = [
     {
         id: 2,
         nameItem: 'Arroz - pacote 5kg',
-        done: false,
+        done: true,
     },
     {
         id: 3,
         nameItem: 'Arroz - pacote 5kg',
-        done: false,
+        done: true,
     },
     {
         id: 4,
@@ -47,12 +44,12 @@ const mock = [
     {
         id: 7,
         nameItem: 'Arroz - pacote 5kg',
-        done: false,
+        done: true,
     },
     {
         id: 7,
         nameItem: 'Arroz - pacote 5kg',
-        done: false,
+        done: true,
     },
     {
         id: 7,
@@ -68,12 +65,10 @@ const mock = [
 
 export function Home() {
     return (
-        <KeyboardAvoidingView>
             <View style={styles.container}>
                 <TopBar done={'3/8'} />
                 <ListItems items={mock} />
                 <InputItem />
             </View>
-        </KeyboardAvoidingView>
     )
 }

@@ -15,16 +15,12 @@ type Props = {
 
 export function ListItems({ items }: Props) {
     return (
-        // <ScrollView style={styles.container}>
-        //     <Item />
-        // </ScrollView>
         <FlatList
             keyExtractor={item => String(item.id)}
             data={items}
             renderItem={({ item }) => (
                 <Item data={item}/>
             )}
-            style={styles.listItens}
         />
     )
 }
