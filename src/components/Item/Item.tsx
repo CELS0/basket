@@ -19,10 +19,10 @@ type Props = {
 
 export function Item({data}: Props) {
     const {nameItem,done, id} = data;
+    console.log(nameItem,done, id)
 
     const { updateItemDone } = useDataList();
 
-    const [checked, setChecked] = useState(false);
     return (
         <View style={done ? styles.containerDone :styles.container}>
             <Checkbox
