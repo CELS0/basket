@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     },
     deleteButton:{
         height: 25,
-        width: 25,
+        width: 22,
         marginLeft: 135,
     }
 })
