@@ -10,7 +10,7 @@ type AuthContextData = {
     item: Item[] | null;
     setList: (nameItem: string) => void;
     updateItemDone: (itemId: number) => void;
-    itemsDoneAll: () => string;
+    contItemDone: string;
 }
 
 type AuthProviderProps = {
@@ -24,6 +24,12 @@ let cont = 0;
 
 function DataListProvider({ children }: AuthProviderProps) {
     const [item, setItem] = useState<Item[]>([]);
+    const [contItemDone, setContItemDone] = useState('')
+
+
+    useEffect(() => {
+        itemsDoneAll()
+    }, [item])
 
     async function setList(nameItem: string) {
         const item: Item = {
@@ -44,12 +50,10 @@ function DataListProvider({ children }: AuthProviderProps) {
         };
     };
 
-    function itemsDoneAll(): string{
+    function itemsDoneAll() {
         const itensDone = items.filter(item => item.done === true);
 
-        console.log(`${itensDone.length}/${items.length}`)
-        
-        return `${itensDone.length}/${items.length}`
+        setContItemDone(`${itensDone.length}/${items.length}`)
     }
 
 
@@ -58,7 +62,7 @@ function DataListProvider({ children }: AuthProviderProps) {
             item,
             setList,
             updateItemDone,
-            itemsDoneAll,
+            contItemDone,
         }
         }>
             {children}
