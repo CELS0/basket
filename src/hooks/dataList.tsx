@@ -73,11 +73,13 @@ function DataListProvider({ children }: AuthProviderProps) {
 
     };
 
-    function deleteItem(itemId: number) {
+    async function deleteItem(itemId: number) {
         const possition = items.findIndex(item => item.id === itemId);
 
         items.splice(possition, 1);
         itemsDoneAll();
+
+        await AsyncStorage.setItem('@basket', JSON.stringify(items))
     }
 
     function itemsDoneAll() {
