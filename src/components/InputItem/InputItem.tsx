@@ -21,6 +21,12 @@ export function InputItem() {
         };
     };
 
+
+    async function alertEditItem(){
+        editItem(nameItem);
+        await playSound();
+    }
+
     async function playSound() {
         const { sound } = await Audio.Sound.createAsync(
             require('../../assets/add.mp3')
@@ -42,7 +48,7 @@ export function InputItem() {
                 isActiveEdit
                     ?
                     <TouchableOpacity
-                        onPress={()=>editItem(nameItem)}
+                        onPress={alertEditItem}
                     >
                         <View style={styles.addItems}>
                             <Icon

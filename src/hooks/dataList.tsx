@@ -71,6 +71,8 @@ function DataListProvider({ children }: AuthProviderProps) {
         await AsyncStorage.setItem('@basket', JSON.stringify(items));
     };
 
+    // CRUDs
+
     async function updateItemDone(itemId: string) {
         const result = items.find(item => item.id === itemId);
 
@@ -100,21 +102,25 @@ function DataListProvider({ children }: AuthProviderProps) {
         if (result) {
             result.nameItem = newNameItem;
             await AsyncStorage.setItem('@basket', JSON.stringify(items));
-            setIsActiveEdite(false)
+            setIsActiveEdite(false);
         };
     }
 
     async function isActiveEditItem(editId: string, nameItem: string){
-        setIsActiveEdite(true)
-        setEditId(editId),
+        setIsActiveEdite(true);
+        setEditId(editId);
         setNameItem(nameItem);
     }
+
+    // Cont items
 
     function itemsDoneAll() {
         const itensDone = items.filter(item => item.done === true);
 
         setContItemDone(`${itensDone.length}/${items.length}`);
     };
+
+    // Modal
 
     function visibleModalDeleteId(itemId: string) {
         setDeleteId(itemId);
