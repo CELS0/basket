@@ -98,7 +98,6 @@ function DataListProvider({ children }: AuthProviderProps) {
         const result = items.find(item => item.id === editId);
 
         if (result) {
-            console.log(result, newNameItem);
             result.nameItem = newNameItem;
             await AsyncStorage.setItem('@basket', JSON.stringify(items));
             setIsActiveEdite(false)
