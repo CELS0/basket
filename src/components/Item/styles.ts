@@ -9,6 +9,8 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         width: '95%',
+        borderWidth: 0.2,
+        borderColor: theme.colors.gray
     },
     containerDone:{
         height: 60,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import {  StatusBar } from 'react-native';
 import { Background } from './src/components/Background/Background';
 import { DataListProvider } from './src/hooks/dataList';
 import { Home } from './src/screens/Home/Home';
