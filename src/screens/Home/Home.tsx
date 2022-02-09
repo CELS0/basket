@@ -15,13 +15,13 @@ export function Home() {
 
     useEffect(() => {
         const backAction = () => {
-          Alert.alert('Hold on!', 'Are you sure you want to go back?', [
+          Alert.alert('Sair do Aplicativo', 'Você tem certeza que deseja sair do aplicativo?', [
             {
-              text: 'Cancel',
+              text: 'Não',
               onPress: () => null,
               style: 'cancel',
             },
-            { text: 'YES', onPress: () => BackHandler.exitApp() },
+            { text: 'Sim', onPress: () => BackHandler.exitApp() },
           ]);
           return true;
         };

@@ -35,7 +35,6 @@ function DataListProvider({ children }: AuthProviderProps) {
     const [deleteId, setDeleteId] = useState('');
 
     async function persistsData() {
-        await AsyncStorage.clear();
         const result = await AsyncStorage.getItem('@basket');
 
         if (result) {
