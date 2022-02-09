@@ -41,9 +41,18 @@ export const styles = StyleSheet.create({
         fontSize: 17,
         color: theme.colors.gray
     },
+    contentButtons:{
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
     deleteButton:{
         height: 25,
         width: 22,
         marginRight: 15,
+    },
+    test:{
+        height: 45,
+        width: '90%',
+        backgroundColor: theme.colors.red,
     }
 })

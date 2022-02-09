@@ -10,7 +10,7 @@ import { Audio } from 'expo-av';
 export function InputItem() {
     const [nameItem, setNameItem] = useState('')
 
-    const { setList } = useDataList();
+    const { setList, isActiveEdit, editItem, nameItem: NewName } = useDataList();
 
     async function validateInput() {
         if ((nameItem.trim()).length < 3) {
@@ -35,19 +35,37 @@ export function InputItem() {
                 maxLength={26}
                 keyboardType={'ascii-capable'}
                 placeholder={'Novo item da lista'}
+                children={NewName}
                 onChangeText={setNameItem}
             />
-            <TouchableOpacity
-                onPress={validateInput}
-            >
-                <View style={styles.addItems}>
-                    <Icon
-                        name="plus"
-                        color={theme.colors.blue}
-                        size={18}
-                    />
-                </View>
-            </TouchableOpacity>
+            {
+                isActiveEdit
+                    ?
+                    <TouchableOpacity
+                        onPress={()=>editItem(nameItem)}
+                    >
+                        <View style={styles.addItems}>
+                            <Icon
+                                name="edit"
+                                color={theme.colors.blue}
+                                size={18}
+                            />
+                        </View>
+                    </TouchableOpacity>
+                    :
+                    <TouchableOpacity
+                        onPress={validateInput}
+                    >
+                        <View style={styles.addItems}>
+                            <Icon
+                                name="plus"
+                                color={theme.colors.blue}
+                                size={18}
+                            />
+                        </View>
+                    </TouchableOpacity>
+            }
+
         </View>
     )
 }

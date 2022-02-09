@@ -18,6 +18,10 @@ type AuthContextData = {
     persistsData: () => void;
     visibleModalDeleteId: (itemId: string) => void;
     notVisibleModal: () => void;
+    editItem: (newNameItem: string) => void;
+    isActiveEdit: boolean;
+    isActiveEditItem:(nameItem: string, itemId: string)=>void;
+    nameItem: string;
 };
 
 type AuthProviderProps = {
@@ -33,6 +37,9 @@ function DataListProvider({ children }: AuthProviderProps) {
     const [contItemDone, setContItemDone] = useState('')
     const [modalVisible, setModalVisible] = useState(false);
     const [deleteId, setDeleteId] = useState('');
+    const [isActiveEdit, setIsActiveEdite] = useState(false);
+    const [editId, setEditId] = useState('');
+    const [nameItem, setNameItem] = useState('');
 
     async function persistsData() {
         const result = await AsyncStorage.getItem('@basket');
@@ -69,6 +76,7 @@ function DataListProvider({ children }: AuthProviderProps) {
 
         if (result) {
             result.done = !result.done;
+            console.log(result);
             itemsDoneAll();
             await AsyncStorage.setItem('@basket', JSON.stringify(items));
         };
@@ -85,6 +93,23 @@ function DataListProvider({ children }: AuthProviderProps) {
             notVisibleModal();
         };
     };
+
+    async function editItem(newNameItem: string) {
+        const result = items.find(item => item.id === editId);
+
+        if (result) {
+            console.log(result, newNameItem);
+            result.nameItem = newNameItem;
+            await AsyncStorage.setItem('@basket', JSON.stringify(items));
+            setIsActiveEdite(false)
+        };
+    }
+
+    async function isActiveEditItem(editId: string, nameItem: string){
+        setIsActiveEdite(true)
+        setEditId(editId),
+        setNameItem(nameItem);
+    }
 
     function itemsDoneAll() {
         const itensDone = items.filter(item => item.done === true);
@@ -113,6 +138,10 @@ function DataListProvider({ children }: AuthProviderProps) {
             persistsData,
             visibleModalDeleteId,
             notVisibleModal,
+            editItem,
+            isActiveEdit,
+            isActiveEditItem,
+            nameItem,
         }
         }>
             {children}
