@@ -7,6 +7,8 @@ import { useDataList } from '../../hooks/dataList';
 export function ListItems() {
     const { item } = useDataList();
 
+    const listItem = item?.reverse()
+
     return (
         item?.length === 0
             ?
@@ -16,7 +18,7 @@ export function ListItems() {
             :
             <FlatList
                 keyExtractor={item => String(item.id)}
-                data={item}
+                data={listItem}
                 renderItem={({ item }) => (
                     <Item data={item} />
                 )}
