@@ -10,9 +10,9 @@ type Props = {
 export function CustomModalDelete({ itemId }: Props) {
     const { modalVisible, visibleModal, deleteItem } = useDataList();
 
-    function handlerModalDelete() {
-        deleteItem(itemId)
-        visibleModal
+    function handlerModalDelete(){
+        deleteItem(itemId);
+        visibleModal();
     }
 
     return (
@@ -33,7 +33,8 @@ export function CustomModalDelete({ itemId }: Props) {
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.buttonYes}
-                        onPress={() => handlerModalDelete}>
+                        onPress={handlerModalDelete}
+                        >
                         <Text>Sim</Text>
                     </TouchableOpacity>
                 </View>

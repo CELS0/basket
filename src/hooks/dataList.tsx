@@ -40,8 +40,7 @@ function DataListProvider({ children }: AuthProviderProps) {
 
         items.push(item)
 
-        const listRevert = items.reverse();
-        setItem(listRevert)
+        setItem(items)
         itemsDoneAll()
     }
 
@@ -58,6 +57,7 @@ function DataListProvider({ children }: AuthProviderProps) {
         const possition = items.findIndex(item => item.id === itemId);
     
         items.splice(possition, 1);
+        itemsDoneAll();
     }
 
     function itemsDoneAll() {
