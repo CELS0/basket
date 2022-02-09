@@ -3,28 +3,32 @@ import { theme } from '../../global/styles/theme';
 
 export const styles = StyleSheet.create({
     container: {
-        
+        flex: 1,
+        alignItems: 'center',
     },
     title: {
-        fontSize: 16,
+        marginTop: 85,
+        fontSize: 23,
     },
-    content:{
+    content: {
         flex: 1,
-        height: 180,
+        height: 22,
         flexDirection: 'row',
         justifyContent: 'space-around',
+        marginTop: 35,
     },
     buttonYes: {
-        height: 35,
-        width: 120,
+        height: 45,
+        width: 130,
         backgroundColor: theme.colors.blue,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 4,
+        marginLeft: 50
     },
     buttonNot: {
-        height: 35,
-        width: 120,
+        height: 45,
+        width: 130,
         backgroundColor: theme.colors.red,
         alignItems: 'center',
         justifyContent: 'center',
