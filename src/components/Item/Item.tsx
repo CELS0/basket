@@ -1,5 +1,5 @@
 import { styles } from './styles';
-import React  from "react";
+import React, { useState }  from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Checkbox } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -21,7 +21,7 @@ type Props = {
 export function Item({data}: Props) {
     const {nameItem,done, id} = data;
 
-    const { updateItemDone } = useDataList();
+    const { updateItemDone, visibleModal} = useDataList();
 
     return (
         <View style={done ? styles.containerDone :styles.container}>
@@ -35,11 +35,10 @@ export function Item({data}: Props) {
             <Text style={done ? styles.contentDone : styles.content}>
                 {nameItem}
             </Text>
-            <TouchableOpacity  style={styles.deleteButton}>
+            <TouchableOpacity  style={styles.deleteButton} onPress={visibleModal}>
                     <Icon name="closecircle" color={theme.colors.red} size={21} />
             </TouchableOpacity>
-
-            {/* <CustomModal/> */}
+            <CustomModal/>
         </View>
     )
 }

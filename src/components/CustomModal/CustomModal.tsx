@@ -1,19 +1,20 @@
 import { styles } from './styles';
-import React, { useRef } from "react";
-import { Text, View, TouchableOpacity } from "react-native";
-import { Modalize } from 'react-native-modalize';
+import React  from "react";
+import { Text, View, TouchableOpacity, Modal } from "react-native";
+import { useDataList } from '../../hooks/dataList';
 
 export function CustomModal() {
-    const modalizeRef = useRef<Modalize>(null);
+    const { modalVisible, visibleModal} = useDataList();
 
-    const onOpen = () => {
-        modalizeRef.current?.open();
-    };
+    function onOpen(){
+
+    }
 
     return (
-        <Modalize
-            ref={modalizeRef}
-            snapPoint={280}
+        <Modal
+        animationType="slide"
+        transparent={false}
+        visible={modalVisible}
         >
 
             <View style={styles.container}>
@@ -22,7 +23,7 @@ export function CustomModal() {
                 <View style={styles.content}>
                     <TouchableOpacity
                         style={styles.buttonNot}
-                        onPress={onOpen}>
+                        onPress={visibleModal}>
                         <Text>Não</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -32,6 +33,6 @@ export function CustomModal() {
                     </TouchableOpacity>
                 </View>
             </View>
-        </Modalize>
+        </Modal>
     );
 }

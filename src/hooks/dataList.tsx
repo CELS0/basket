@@ -11,6 +11,8 @@ type AuthContextData = {
     setList: (nameItem: string) => void;
     updateItemDone: (itemId: number) => void;
     contItemDone: string;
+    modalVisible: boolean;
+    visibleModal: () => void;
 }
 
 type AuthProviderProps = {
@@ -25,6 +27,8 @@ let cont = 0;
 function DataListProvider({ children }: AuthProviderProps) {
     const [item, setItem] = useState<Item[]>([]);
     const [contItemDone, setContItemDone] = useState('')
+    const [modalVisible, setModalVisible] = useState(false);
+
 
     async function setList(nameItem: string) {
         const item: Item = {
@@ -35,7 +39,7 @@ function DataListProvider({ children }: AuthProviderProps) {
 
         items.push(item)
 
-      const listRevert = items.reverse();
+        const listRevert = items.reverse();
         setItem(listRevert)
         itemsDoneAll()
     }
@@ -53,7 +57,11 @@ function DataListProvider({ children }: AuthProviderProps) {
         const itensDone = items.filter(item => item.done === true);
 
         setContItemDone(`${itensDone.length}/${items.length}`)
-        
+
+    }
+
+    function visibleModal() {
+        setModalVisible(!modalVisible)
     }
 
 
@@ -63,6 +71,8 @@ function DataListProvider({ children }: AuthProviderProps) {
             setList,
             updateItemDone,
             contItemDone,
+            modalVisible,
+            visibleModal
         }
         }>
             {children}
