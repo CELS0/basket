@@ -1,7 +1,7 @@
 import { styles } from './styles'
 import React, { useEffect } from "react";
 import { View } from "react-native";
-import { TopBar } from '../../components/TopBar/TopBar';
+import { Header } from '../../components/Header/Header';
 import { ListItems } from '../../components/ListItems/ListItems';
 import { InputItem } from '../../components/InputItem/InputItem';
 import { useDataList } from '../../hooks/dataList';
@@ -15,7 +15,7 @@ export function Home() {
     
     return (
         <View style={styles.container}>
-            <TopBar />
+            <Header />
             <ListItems />
             <InputItem />
         </View>

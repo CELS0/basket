@@ -4,7 +4,7 @@ import { View,Text } from "react-native";
 import { useDataList } from '../../hooks/dataList';
 
 
-export function TopBar(){
+export function Header(){
     const { contItemDone } = useDataList();
 
     return(
