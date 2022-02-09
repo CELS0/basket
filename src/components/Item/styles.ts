@@ -9,16 +9,28 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         width: '95%',
+        justifyContent: 'space-between',
         borderWidth: 0.2,
-        borderColor: theme.colors.gray
+        borderColor: theme.colors.gray,
+        alignSelf: 'center'
+        
     },
     containerDone:{
+        flex: 1,
         height: 60,
         backgroundColor: theme.colors.greenDone,
         marginTop: 12,
         flexDirection: 'row',
         alignItems: 'center',
         width: '95%',
+        justifyContent: 'space-between',
+        alignSelf: 'center',
+        borderWidth: 0.4,
+        borderColor: theme.colors.green,
+    },
+    main:{
+        flexDirection: 'row',
+        alignItems: 'center',
     },
     contentDone:{
         fontSize: 17,
@@ -32,6 +44,6 @@ export const styles = StyleSheet.create({
     deleteButton:{
         height: 25,
         width: 22,
-        marginLeft: 135,
+        marginRight: 15,
     }
 })

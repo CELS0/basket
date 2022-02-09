@@ -9,5 +9,5 @@ export const styles = StyleSheet.create({
     title: {
         marginTop: 10,
         color: theme.colors.gray,
-    }
+    },
 })
