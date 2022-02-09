@@ -7,7 +7,7 @@ export interface Item {
     id: number;
     nameItem: string;
     done: boolean;
-}
+};
 
 type AuthContextData = {
     item: Item[] | null;
@@ -19,16 +19,15 @@ type AuthContextData = {
     persistsData: () => void;
     visibleModalDeleteId: (itemId: number) => void;
     notVisibleModal: () => void;
-}
+};
 
 type AuthProviderProps = {
     children: ReactNode;
-}
+};
 
 export const DataListContext = createContext({} as AuthContextData);
 
 const items: Item[] = [];
-let cont = 0;
 
 function DataListProvider({ children }: AuthProviderProps) {
     const [item, setItem] = useState<Item[]>([]);
@@ -43,38 +42,36 @@ function DataListProvider({ children }: AuthProviderProps) {
             const list = JSON.parse(result) as Item[];
 
             list.map((item: Item) => {
-                items.push(item)
-            })
+                items.push(item);
+            });
 
-            setItem(items)
-        }
-    }
+            setItem(items);
+        };
+    };
 
     async function setList(nameItem: string) {
         const newItem: Item = {
             id: items.length + 1,
             nameItem,
             done: false,
-        }
+        };
 
-        items.push(newItem)
+        items.push(newItem);
+        setItem(items);
 
-        setItem(items)
-        itemsDoneAll()
+        itemsDoneAll();
 
-        await AsyncStorage.setItem('@basket', JSON.stringify(items))
-    }
+        await AsyncStorage.setItem('@basket', JSON.stringify(items));
+    };
 
     async function updateItemDone(itemId: number) {
-        console.log('Update', itemId)
-
         const result = items.find(item => item.id === itemId);
 
         if (result) {
             result.done = !result.done;
-            itemsDoneAll()
+            itemsDoneAll();
+            await AsyncStorage.setItem('@basket', JSON.stringify(items));
         };
-
     };
 
     async function deleteItem() {
@@ -84,26 +81,25 @@ function DataListProvider({ children }: AuthProviderProps) {
             items.splice(possition, 1);
             itemsDoneAll();
 
-            await AsyncStorage.setItem('@basket', JSON.stringify(items))
-            setModalVisible(false)
-        }
-    }
+            await AsyncStorage.setItem('@basket', JSON.stringify(items));
+            notVisibleModal();
+        };
+    };
 
     function itemsDoneAll() {
         const itensDone = items.filter(item => item.done === true);
 
-        setContItemDone(`${itensDone.length}/${items.length}`)
-
-    }
+        setContItemDone(`${itensDone.length}/${items.length}`);
+    };
 
     function visibleModalDeleteId(itemId: number) {
         setDeleteId(itemId);
-        setModalVisible(true)
-    }
+        setModalVisible(true);
+    };
 
     function notVisibleModal() {
-        setModalVisible(false)
-    }
+        setModalVisible(false);
+    };
 
 
     return (
@@ -121,13 +117,13 @@ function DataListProvider({ children }: AuthProviderProps) {
         }>
             {children}
         </DataListContext.Provider >
-    )
-}
+    );
+};
 
 function useDataList() {
     const context = useContext(DataListContext)
 
     return context;
-}
+};
 
-export { DataListProvider, useDataList }
+export { DataListProvider, useDataList };
