@@ -6,7 +6,6 @@ import { useDataList } from '../../hooks/dataList';
 
 export function Header() {
     const { contItemDone } = useDataList();
-    console.log(contItemDone);
     return (
         <View style={styles.container}>
             <Text style={styles.title}>
