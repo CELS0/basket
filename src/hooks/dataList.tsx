@@ -46,6 +46,7 @@ function DataListProvider({ children }: AuthProviderProps) {
             });
 
             setItem(items);
+            itemsDoneAll();
         };
     };
 
