@@ -20,7 +20,7 @@ type Props = {
 export function Item({ data }: Props) {
     const { nameItem, done, id } = data;
 
-    const { updateItemDone, visibleModal } = useDataList();
+    const { updateItemDone, visibleModalDeleteId } = useDataList();
 
     return (
         <View style={done ? styles.containerDone : styles.container}>
@@ -34,10 +34,10 @@ export function Item({ data }: Props) {
             <Text style={done ? styles.contentDone : styles.content}>
                 {nameItem}
             </Text>
-            <TouchableOpacity style={styles.deleteButton} onPress={visibleModal}>
+            <TouchableOpacity style={styles.deleteButton} onPress={() => visibleModalDeleteId(id)}>
                 <Icon name="closecircle" color={theme.colors.red} size={21} />
             </TouchableOpacity>
-            <CustomModalDelete itemId={id}/>
+            <CustomModalDelete />
         </View>
     )
 }

@@ -15,9 +15,10 @@ type AuthContextData = {
     updateItemDone: (itemId: number) => void;
     contItemDone: string;
     modalVisible: boolean;
-    visibleModal: () => void;
-    deleteItem: (itemId: number) => void;
+    deleteItem: () => void;
     persistsData: () => void;
+    visibleModalDeleteId: (itemId: number) => void;
+    notVisibleModal: () => void;
 }
 
 type AuthProviderProps = {
@@ -33,6 +34,7 @@ function DataListProvider({ children }: AuthProviderProps) {
     const [item, setItem] = useState<Item[]>([]);
     const [contItemDone, setContItemDone] = useState('')
     const [modalVisible, setModalVisible] = useState(false);
+    const [deleteId, setDeleteId] = useState(0);
 
     async function persistsData() {
         const result = await AsyncStorage.getItem('@basket');
@@ -64,6 +66,8 @@ function DataListProvider({ children }: AuthProviderProps) {
     }
 
     async function updateItemDone(itemId: number) {
+        console.log('Update', itemId)
+
         const result = items.find(item => item.id === itemId);
 
         if (result) {
@@ -73,13 +77,16 @@ function DataListProvider({ children }: AuthProviderProps) {
 
     };
 
-    async function deleteItem(itemId: number) {
-        const possition = items.findIndex(item => item.id === itemId);
+    async function deleteItem() {
+        if (deleteId) {
+            const possition = items.findIndex(item => item.id === deleteId);
 
-        items.splice(possition, 1);
-        itemsDoneAll();
+            items.splice(possition, 1);
+            itemsDoneAll();
 
-        await AsyncStorage.setItem('@basket', JSON.stringify(items))
+            await AsyncStorage.setItem('@basket', JSON.stringify(items))
+            setModalVisible(false)
+        }
     }
 
     function itemsDoneAll() {
@@ -89,8 +96,13 @@ function DataListProvider({ children }: AuthProviderProps) {
 
     }
 
-    function visibleModal() {
-        setModalVisible(!modalVisible)
+    function visibleModalDeleteId(itemId: number) {
+        setDeleteId(itemId);
+        setModalVisible(true)
+    }
+
+    function notVisibleModal() {
+        setModalVisible(false)
     }
 
 
@@ -101,9 +113,10 @@ function DataListProvider({ children }: AuthProviderProps) {
             updateItemDone,
             contItemDone,
             modalVisible,
-            visibleModal,
             deleteItem,
-            persistsData
+            persistsData,
+            visibleModalDeleteId,
+            notVisibleModal,
         }
         }>
             {children}

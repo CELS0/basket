@@ -7,13 +7,8 @@ type Props = {
     itemId: number,
 }
 
-export function CustomModalDelete({ itemId }: Props) {
-    const { modalVisible, visibleModal, deleteItem } = useDataList();
-
-    function handlerModalDelete(){
-        deleteItem(itemId);
-        visibleModal();
-    }
+export function CustomModalDelete() {
+    const { modalVisible, deleteItem,notVisibleModal} = useDataList();
 
     return (
         <Modal
@@ -28,12 +23,12 @@ export function CustomModalDelete({ itemId }: Props) {
                 <View style={styles.content}>
                     <TouchableOpacity
                         style={styles.buttonNot}
-                        onPress={visibleModal}>
+                        onPress={notVisibleModal}>
                         <Text>Não</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.buttonYes}
-                        onPress={handlerModalDelete}
+                        onPress={()=>deleteItem()}
                         >
                         <Text>Sim</Text>
                     </TouchableOpacity>
