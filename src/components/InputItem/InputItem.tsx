@@ -5,19 +5,29 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import { theme } from '../../global/styles/theme';
 import { useDataList } from '../../hooks/dataList';
 import { Alert } from 'react-native';
+import { Audio } from 'expo-av';
 
 export function InputItem() {
     const [nameItem, setNameItem] = useState('')
 
     const { setList } = useDataList();
 
-    function validateInput(){
-        if((nameItem.trim()).length < 3){
+    async function validateInput() {
+        if ((nameItem.trim()).length < 3) {
             Alert.alert('Nome do item com menos de 3 caracteres');
-        }else{
+        } else {
             setList(nameItem);
+            await playSound();
         };
     };
+
+    async function playSound() {
+        const { sound } = await Audio.Sound.createAsync(
+            require('../../assets/add.mp3')
+        );
+
+        await sound.playAsync();
+    }
 
     return (
         <View style={styles.container}>

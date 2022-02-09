@@ -22,6 +22,7 @@ export function Item({ data }: Props) {
 
     const { updateItemDone, visibleModalDeleteId } = useDataList();
 
+
     return (
         <View style={done ? styles.containerDone : styles.container}>
             <View style={styles.main}>

@@ -2,6 +2,7 @@ import { styles } from './styles';
 import React from "react";
 import { Text, View, TouchableOpacity, Modal } from "react-native";
 import { useDataList } from '../../hooks/dataList';
+import { Audio } from 'expo-av';
 
 type Props = {
     itemId: number,
@@ -9,6 +10,17 @@ type Props = {
 
 export function CustomModalDelete() {
     const { modalVisible, deleteItem,notVisibleModal} = useDataList();
+
+    async function playSound() {
+        const { sound } = await Audio.Sound.createAsync(
+            require('../../assets/remove.mp3'),
+        );
+        
+        deleteItem();
+        await sound.playAsync();
+    }
+
+
 
     return (
         <Modal
@@ -28,7 +40,7 @@ export function CustomModalDelete() {
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.buttonYes}
-                        onPress={()=>deleteItem()}
+                        onPress={playSound}
                         >
                         <Text>Sim</Text>
                     </TouchableOpacity>

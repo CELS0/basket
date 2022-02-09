@@ -9,7 +9,7 @@ export default function App() {
     <Background>
       <StatusBar
         barStyle="light-content"
-        backgroundColor="transparent"
+        backgroundColor="#2980B9"
         translucent
       />
       <DataListProvider>
