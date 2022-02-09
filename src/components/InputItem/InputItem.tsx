@@ -1,7 +1,6 @@
 import { styles } from './styles';
 import React, { useState } from "react";
-import { TextInput, View } from "react-native";
-import { RectButton } from 'react-native-gesture-handler';
+import { TextInput, TouchableOpacity, View } from "react-native";
 import Icon from 'react-native-vector-icons/AntDesign';
 import { theme } from '../../global/styles/theme';
 import { useDataList } from '../../hooks/dataList';
@@ -18,7 +17,7 @@ export function InputItem() {
                 placeholder={'Novo item da lista'}
                 onChangeText={setNameItem}
             />
-            <RectButton
+            <TouchableOpacity
             >
                 <View style={styles.addItems}>
                     <Icon 
@@ -28,7 +27,7 @@ export function InputItem() {
                     onPress={()=>setList(nameItem)} 
                     />
                 </View>
-            </RectButton>
+            </TouchableOpacity>
         </View>
     )
 }

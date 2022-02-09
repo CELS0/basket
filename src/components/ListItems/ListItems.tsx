@@ -1,5 +1,5 @@
 import { styles } from './styles'
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FlatList, Text, View } from "react-native";
 import { Item } from '../Item/Item';
 import { useDataList } from '../../hooks/dataList';

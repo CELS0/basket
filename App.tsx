@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, StatusBar } from 'react-native';
+import {  StatusBar } from 'react-native';
 import { Background } from './src/components/Background/Background';
 import { DataListProvider } from './src/hooks/dataList';
 import { Home } from './src/screens/Home/Home';
@@ -13,8 +13,7 @@ export default function App() {
         translucent
       />
       <DataListProvider>
-        {/* <Home /> */}
-        <Modal />
+        <Home />
       </DataListProvider>
     </Background>
   );

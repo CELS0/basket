@@ -1,11 +1,12 @@
 import { styles } from './styles';
-import React, { useState } from "react";
-import { View, Text } from "react-native";
+import React  from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 import { Checkbox } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { RectButton } from 'react-native-gesture-handler';
 import { theme } from '../../global/styles/theme';
 import { useDataList } from '../../hooks/dataList';
+import { CustomModal } from '../CustomModal/CustomModal';
 
 type  ItemProps = {
     id: number,
@@ -28,15 +29,17 @@ export function Item({data}: Props) {
                 status={done ? 'checked' : 'unchecked'}
                 color={theme.colors.green}
                 onPress={() => {
-                    updateItemDone(id)
+                    updateItemDone(id);
                 }}
             />
             <Text style={done ? styles.contentDone : styles.content}>
                 {nameItem}
             </Text>
-            <RectButton  style={styles.deleteButton}>
+            <TouchableOpacity  style={styles.deleteButton}>
                     <Icon name="closecircle" color={theme.colors.red} size={21} />
-            </RectButton>
+            </TouchableOpacity>
+
+            {/* <CustomModal/> */}
         </View>
     )
 }
