@@ -13,6 +13,7 @@ type AuthContextData = {
     contItemDone: string;
     modalVisible: boolean;
     visibleModal: () => void;
+    deleteItem: (itemId: number) => void;
 }
 
 type AuthProviderProps = {
@@ -53,6 +54,12 @@ function DataListProvider({ children }: AuthProviderProps) {
         };
     };
 
+    function deleteItem(itemId: number){
+        const possition = items.findIndex(item => item.id === itemId);
+    
+        items.splice(possition, 1);
+    }
+
     function itemsDoneAll() {
         const itensDone = items.filter(item => item.done === true);
 
@@ -72,7 +79,8 @@ function DataListProvider({ children }: AuthProviderProps) {
             updateItemDone,
             contItemDone,
             modalVisible,
-            visibleModal
+            visibleModal,
+            deleteItem
         }
         }>
             {children}

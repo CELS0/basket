@@ -1,20 +1,25 @@
 import { styles } from './styles';
-import React  from "react";
+import React from "react";
 import { Text, View, TouchableOpacity, Modal } from "react-native";
 import { useDataList } from '../../hooks/dataList';
 
-export function CustomModal() {
-    const { modalVisible, visibleModal} = useDataList();
+type Props = {
+    itemId: number,
+}
 
-    function onOpen(){
+export function CustomModalDelete({ itemId }: Props) {
+    const { modalVisible, visibleModal, deleteItem } = useDataList();
 
+    function handlerModalDelete() {
+        deleteItem(itemId)
+        visibleModal
     }
 
     return (
         <Modal
-        animationType="slide"
-        transparent={false}
-        visible={modalVisible}
+            animationType="slide"
+            transparent={false}
+            visible={modalVisible}
         >
 
             <View style={styles.container}>
@@ -28,7 +33,7 @@ export function CustomModal() {
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.buttonYes}
-                        onPress={onOpen}>
+                        onPress={() => handlerModalDelete}>
                         <Text>Sim</Text>
                     </TouchableOpacity>
                 </View>

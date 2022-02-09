@@ -18,13 +18,13 @@ export function InputItem() {
                 onChangeText={setNameItem}
             />
             <TouchableOpacity
+            onPress={()=>setList(nameItem)} 
             >
                 <View style={styles.addItems}>
                     <Icon 
                     name="plus" 
                     color={theme.colors.blue} 
                     size={18} 
-                    onPress={()=>setList(nameItem)} 
                     />
                 </View>
             </TouchableOpacity>

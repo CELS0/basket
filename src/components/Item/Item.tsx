@@ -5,7 +5,7 @@ import { Checkbox } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { theme } from '../../global/styles/theme';
 import { useDataList } from '../../hooks/dataList';
-import { CustomModal } from '../CustomModal/CustomModal';
+import { CustomModalDelete } from '../CustomModalDelete/CustomModalDelete';
 
 type ItemProps = {
     id: number,
@@ -37,7 +37,7 @@ export function Item({ data }: Props) {
             <TouchableOpacity style={styles.deleteButton} onPress={visibleModal}>
                 <Icon name="closecircle" color={theme.colors.red} size={21} />
             </TouchableOpacity>
-            <CustomModal />
+            <CustomModalDelete itemId={id}/>
         </View>
     )
 }
