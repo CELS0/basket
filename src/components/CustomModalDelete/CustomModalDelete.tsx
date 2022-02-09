@@ -12,7 +12,7 @@ export function CustomModalDelete() {
 
     return (
         <Modal
-            animationType="slide"
+            animationType="fade"
             transparent={false}
             visible={modalVisible}
         >
