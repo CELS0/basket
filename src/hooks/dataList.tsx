@@ -1,10 +1,9 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useEffect } from 'react';
-
+import uuid from 'react-native-uuid';
 
 export interface Item {
-    id: number;
+    id: string;
     nameItem: string;
     done: boolean;
 };
@@ -12,12 +11,12 @@ export interface Item {
 type AuthContextData = {
     item: Item[] | null;
     setList: (nameItem: string) => void;
-    updateItemDone: (itemId: number) => void;
+    updateItemDone: (itemId: string) => void;
     contItemDone: string;
     modalVisible: boolean;
     deleteItem: () => void;
     persistsData: () => void;
-    visibleModalDeleteId: (itemId: number) => void;
+    visibleModalDeleteId: (itemId: string) => void;
     notVisibleModal: () => void;
 };
 
@@ -33,9 +32,10 @@ function DataListProvider({ children }: AuthProviderProps) {
     const [item, setItem] = useState<Item[]>([]);
     const [contItemDone, setContItemDone] = useState('')
     const [modalVisible, setModalVisible] = useState(false);
-    const [deleteId, setDeleteId] = useState(0);
+    const [deleteId, setDeleteId] = useState('');
 
     async function persistsData() {
+        await AsyncStorage.clear();
         const result = await AsyncStorage.getItem('@basket');
 
         if (result) {
@@ -52,7 +52,7 @@ function DataListProvider({ children }: AuthProviderProps) {
 
     async function setList(nameItem: string) {
         const newItem: Item = {
-            id: items.length + 1,
+            id: String(uuid.v4()),
             nameItem,
             done: false,
         };
@@ -65,7 +65,7 @@ function DataListProvider({ children }: AuthProviderProps) {
         await AsyncStorage.setItem('@basket', JSON.stringify(items));
     };
 
-    async function updateItemDone(itemId: number) {
+    async function updateItemDone(itemId: string) {
         const result = items.find(item => item.id === itemId);
 
         if (result) {
@@ -93,7 +93,7 @@ function DataListProvider({ children }: AuthProviderProps) {
         setContItemDone(`${itensDone.length}/${items.length}`);
     };
 
-    function visibleModalDeleteId(itemId: number) {
+    function visibleModalDeleteId(itemId: string) {
         setDeleteId(itemId);
         setModalVisible(true);
     };
